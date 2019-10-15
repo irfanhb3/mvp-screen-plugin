@@ -22,7 +22,7 @@
             <add-to-group group-id="NewGroup" anchor="last"/>
             <separator />
             <action id="NewScreenAction"
-                    class="kotlin.NewActivityAction"
+                    class="NewActivityAction"
                     text="MVP"
                     description="MVP screen creator"/>
         </group>

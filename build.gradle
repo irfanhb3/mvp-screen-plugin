@@ -2,9 +2,9 @@ plugins {
     id 'org.jetbrains.intellij' version '0.4.10'
     id 'org.jetbrains.kotlin.jvm' version '1.3.41'
 }
-
-group 'mvp'
-version '0.1'
+apply plugin: 'kotlin-kapt'
+group 'plugin'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -12,13 +12,22 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile 'com.google.dagger:dagger:2.4'
+    kapt 'com.google.dagger:dagger-compiler:2.4'
+    compile 'com.squareup.retrofit2:retrofit:2.5.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.5.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.2.5'
+    compile 'com.github.akarnokd:rxjava2-swing:0.3.3'
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version '2019.2.3'
+    updateSinceUntilBuild false
+    plugins = ['git4idea']
     plugins 'kotlin'
-    alternativeIdePath '/Applications/Android Studio.app/Contents/'
+    alternativeIdePath '/Applications/Android Studio.app/'
 }
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
