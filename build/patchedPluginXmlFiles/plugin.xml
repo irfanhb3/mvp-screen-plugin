@@ -1,0 +1,19 @@
+<idea-plugin>
+  <version>1.0-SNAPSHOT</version>
+  <change-notes>
+      Add change notes here.&lt;br&gt;
+      &lt;em&gt;most HTML tags may be used&lt;/em&gt;</change-notes>
+  <id>mvp.mvp</id>
+  <name>MVP screen creator</name>
+  <vendor email="irfanhb3@gmail.com" url="http://www.byjus.com">Byju's</vendor>
+  <description>Plugin for creating a new activity based on mvp patter&gt;</description>
+  <extensions defaultExtensionNs="com.intellij"/>
+  <actions>
+    <group id="MvpCreator.FileMenu" text="MVP" description="Activity Creator Plugin">
+      <add-to-group group-id="NewGroup" anchor="last"/>
+      <separator/>
+      <action id="NewMVPxAction" class="newmvp.NewMVPAction" text="MVP" description="MVP screen creator"/>
+    </group>
+  </actions>
+  <depends>org.jetbrains.kotlin</depends>
+</idea-plugin>

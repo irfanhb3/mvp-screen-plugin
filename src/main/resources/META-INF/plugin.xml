@@ -21,8 +21,8 @@
                description="Activity Creator Plugin">
             <add-to-group group-id="NewGroup" anchor="last"/>
             <separator />
-            <action id="NewScreenAction"
-                    class="NewActivityAction"
+            <action id="NewMVPxAction"
+                    class="newmvp.NewMVPAction"
                     text="MVP"
                     description="MVP screen creator"/>
         </group>
