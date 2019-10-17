@@ -8,12 +8,12 @@ interface ISourceRoot {
 
     val path: String
 
-    val directory: Directory
+    val directory: IDirectory
 }
 
 class SourceRoot(project: Project, virtualFile: VirtualFile) : ISourceRoot {
 
     override val path = virtualFile.path
 
-    override val directory = DirectoryImpl(project, PsiManager.getInstance(project).findDirectory(virtualFile)!!)
+    override val directory = Directory(project, PsiManager.getInstance(project).findDirectory(virtualFile)!!)
 }

@@ -5,7 +5,7 @@ import java.io.Serializable
 
 private const val UNNAMED_ELEMENT = "UnnamedElement"
 
-data class ScreenElement(var name: String = "",
+data class MVPElement(var name: String = "",
                          var template: String = "",
                          var fileType: FileType = FileType.KOTLIN,
                          var fileNameTemplate: String = "") : Serializable {
@@ -35,6 +35,6 @@ data class ScreenElement(var name: String = "",
                     .replace(FileNames.ANDROID_COMPONENT_CLASS_NAME.value, androidComponentBaseClass.substring(androidComponentBaseClass.lastIndexOf(".") + 1))
 
     companion object {
-        fun getDefault() = ScreenElement(UNNAMED_ELEMENT, FileType.KOTLIN.defaultTemplate, FileType.KOTLIN, FileType.KOTLIN.defaultFileName)
+        fun getDefault() = MVPElement(UNNAMED_ELEMENT, FileType.KOTLIN.defaultTemplate, FileType.KOTLIN, FileType.KOTLIN.defaultFileName)
     }
 }

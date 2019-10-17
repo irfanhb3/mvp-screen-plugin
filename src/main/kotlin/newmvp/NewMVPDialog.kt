@@ -8,7 +8,7 @@ import file.CurrentPath
 import javax.inject.Inject
 import javax.swing.JComponent
 
-class NewMVPDialog(val project: Project, val currentPath: CurrentPath?): DialogWrapper(true), INewMVPDialog{
+class NewMVPDialog(val project: Project, val currentPath: CurrentPath?) : DialogWrapper(true), INewMVPDialog {
 
     private val panel = NewMVPPanel()
     @Inject
@@ -27,23 +27,23 @@ class NewMVPDialog(val project: Project, val currentPath: CurrentPath?): DialogW
         return panel
     }
 
-    override fun doOKAction() = presenter.onClick()
+    override fun doOKAction() = presenter.onClick(
+        panel.packageTextField.text,
+        panel.nameTextField.text,
+        panel.moduleComboBox.selectedItem.toString()
+    )
 
-    override fun showModules(modules: List<String>) {
-
-    }
+    override fun showModules(modules: List<String>) = modules.forEach { panel.moduleComboBox.addItem(it) }
 
     override fun showPackage(packageName: String) {
-
+        panel.packageTextField.text = packageName
     }
 
     override fun selectModule(module: String) {
-
+        panel.moduleComboBox.selectedItem = module
     }
 
-    override fun close() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun close() = close(OK_EXIT_CODE)
 
 
 }

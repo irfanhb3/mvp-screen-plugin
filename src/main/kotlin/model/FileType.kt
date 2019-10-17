@@ -2,11 +2,11 @@ package model
 
 private val KOTLIN_DEFAULT_TEMPLATE = "package ${FileNames.PACKAGE_NAME.value}\n\nclass ${FileNames.NAME.value}${FileNames.SCREEN_ELEMENT.value}"
 private const val LAYOUT_XML_DEFAULT_TEMPLATE = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-        "<FrameLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
+        "<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
         "    android:layout_width=\"match_parent\"\n" +
         "    android:layout_height=\"match_parent\">\n" +
         "\n" +
-        "</FrameLayout>"
+        "</LinearLayout>"
 private val KOTLIN_DEFAULT_FILE_NAME = "${FileNames.NAME.value}${FileNames.SCREEN_ELEMENT.value}"
 private val LAYOUT_XML_DEFAULT_FILE_NAME = "${FileNames.ANDROID_COMPONENT_NAME_LOWER_CASE.value}_${FileNames.NAME_SNAKE_CASE.value}"
 

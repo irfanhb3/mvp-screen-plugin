@@ -10,6 +10,13 @@
     <!-- uncomment to enable plugin in all products
     <depends>com.intellij.modules.lang</depends>
     -->
+    <application-components>
+        <component>
+            <implementation-class>
+                persistance.MVPComponent
+            </implementation-class>
+        </component>
+    </application-components>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
@@ -24,7 +31,9 @@
             <action id="NewMVPxAction"
                     class="newmvp.NewMVPAction"
                     text="MVP"
-                    description="MVP screen creator"/>
+                    description="MVP screen creator">
+            <keyboard-shortcut first-keystroke="control alt n" keymap="$default"/>
+            </action>
         </group>
     </actions>
 

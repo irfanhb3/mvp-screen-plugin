@@ -7,19 +7,19 @@ import com.intellij.psi.PsiFileFactory
 import model.FileType
 import org.jetbrains.kotlin.idea.KotlinLanguage
 
-interface Directory {
+interface IDirectory {
 
-    fun findSubdirectory(name: String): Directory?
-    fun createSubdirectory(name: String): Directory
+    fun findSubdirectory(name: String): IDirectory?
+    fun createSubdirectory(name: String): IDirectory
     fun addFile(file: File)
 }
 
-class DirectoryImpl(private val project: Project,
-                    private val psiDirectory: PsiDirectory) : Directory {
+class Directory(private val project: Project,
+                    private val psiDirectory: PsiDirectory) : IDirectory {
 
-    override fun findSubdirectory(name: String) = psiDirectory.findSubdirectory(name)?.let { DirectoryImpl(project, it) }
+    override fun findSubdirectory(name: String) = psiDirectory.findSubdirectory(name)?.let { Directory(project, it) }
 
-    override fun createSubdirectory(name: String) = DirectoryImpl(project, psiDirectory.createSubdirectory(name))
+    override fun createSubdirectory(name: String) = Directory(project, psiDirectory.createSubdirectory(name))
 
     override fun addFile(file: File) {
         val language = when(file.fileType) {

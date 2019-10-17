@@ -1,20 +1,20 @@
 package newmvp
 
 import data.file.IPackageExtractor
-import data.file.PackageExtractor
 import data.repository.IModuleRepository
-import data.repository.ModuleRepository
-import file.CurrentPath
+import file.*
 import javax.inject.Inject
 
 interface INewMVPDialogPresenter{
     fun attachView(view: INewMVPDialog)
     fun onLoadView()
-    fun onClick()
+    fun onClick(packageName: String, screenName: String, module: String)
 }
 
 class NewMVPDialogPresenter @Inject constructor(val packageExtractor: IPackageExtractor,
                                                 val moduleRepository: IModuleRepository,
+                                                val fileCreator: IFileCreator,
+                                                val writerDispatcher: IWriteActionDispatcher,
                                                 val currentPath: CurrentPath?): INewMVPDialogPresenter {
 
 
@@ -29,8 +29,11 @@ class NewMVPDialogPresenter @Inject constructor(val packageExtractor: IPackageEx
         currentPath?.let { view?.selectModule(currentPath.module)}
     }
 
-    override fun onClick(){
-
+    override fun onClick(packageName: String, screenName: String, module: String) {
+        writerDispatcher.dispatch {
+            fileCreator.createScreenFiles(packageName, screenName, module)
+        }
+        view?.close()
     }
 
 }
